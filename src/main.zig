@@ -2,8 +2,9 @@ const std = @import("std");
 const WasmAllocator = @import("WasmAllocator.zig");
 const Hostio = @import("./Helpers/Hostio.zig");
 
-pub const allocator = std.mem.Allocator{
-    .ptr = undefined,
+//This creates a WebAssembly-compatible memory allocator that follows Zig's standard allocator interface
+
+pub const allocator = std.mem.Allocator{ 
     .vtable = &WasmAllocator.vtable,
 };
 pub fn result() ![]u8 {
